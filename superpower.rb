@@ -24,21 +24,32 @@ end
 
 class SuperHero
   include SuperPower
+  
+  @@superhero_power = {
+   "flash" => "can_run",
+    "shaktiman" => "can_jump",
+    "spiderman"  => "can_jump"
+  }
 
-  def flash_power
-    can_run
+  def initialize(name_of_hero)
+    @name_of_hero = name_of_hero
   end
 
-  def shaktiman_power
-    can_fly
-  end
+  def power
+   a =  @@superhero_power[@name_of_hero]
+   
+   if a == "can_run"
+     can_run
+   elsif a == "can_jump"
+     can_jump
+   else
+     can_fly
+   end
 
-  def spiderman_power
-    can_jump
   end
 
 end
 
-flash = SuperHero.new
-flash.flash_power
-flash.can_jump
+SuperHero.new("flash").power
+SuperHero.new("shaktiman").power
+SuperHero.new("spiderman").power
